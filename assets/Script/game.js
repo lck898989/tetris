@@ -31,20 +31,29 @@ cc.Class({
         //初始化y坐标
         var y = this.nodeHeight/2 - this.prefabHeight;
         //初始化x坐标
-        var x = this.nodeHeight/2 - this.prefabHeight;
+        var x = -this.nodeHeight/2 + this.prefabHeight;
         var backGroundArr = [];
         for(var i = 0;i < 20; i++){
+            //设置它的y坐标
+            y += i * this.prefabHeight;
             var outArr = backGround[i];
             for(var j = 0; j < 10;j++){
                 //y坐标不变，x坐标要变
-                    this.setPrefabPosition(this.backPrefab,(x + j * this.prefabHeight),y,this.node);
+                this.setPrefabPosition(this.backPrefab,(x + j * this.prefabHeight),y,this.node);
             }
         }
     },
+    /**
+    @param prefab:将要生成预制节点的预制体
+    @param x     :将要生成预制节点的x坐标
+    @param y     :将要生成预制节点的y坐标
+    @param parentNode : 生成的预制节点的父节点
+     */
     setPrefabPosition : function(prefab,x,y,parentNode){
            var prefab = this.createPrefab(prefab);
            prefab.setPosition(x,y);
            parentNode.addChild(prefab);
+           return prefab;
     },
     createPrefab : function(prefab){
         var prefabNode = cc.instantiate(prefab);
