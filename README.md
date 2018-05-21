@@ -1,2 +1,2 @@
-# tetris
-a game of tetris
+# hello-world
+Hello world new project template.
